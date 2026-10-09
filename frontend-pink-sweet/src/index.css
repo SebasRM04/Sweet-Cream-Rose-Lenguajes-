@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@font-face {
+  font-family: 'Poppins-Medium';
+  src: url('./assets/fonts/Poppins-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins-Bold';
+  src: url('./assets/fonts/Poppins-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poppins-SemiBold';
+  src: url('./assets/fonts/Poppins-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Poltawski-Nowy';
+  src: url('./assets/fonts/Poltawski-Nowy.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Odor-Mean-Chey';
+  src: url('./assets/fonts/Odor-Mean-Chey.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Signika-Regular';
+  src: url('./assets/fonts/Signika-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'RougeScript-Regular';
+  src: url('./assets/fonts/RougeScript-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Rosario-Regular';
+  src: url('./assets/fonts/Rosario-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Sedan-Regular';
+  src: url('./assets/fonts/Sedan-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SofiaSans-Regular';
+  src: url('./assets/fonts/SofiaSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Sansita-Regular';
+  src: url('./assets/fonts/Sansita-Regular.ttf') format('truetype');
+}
