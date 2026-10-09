@@ -1,0 +1,28 @@
+# Variables de entorno (contienen credenciales reales)
+.env
+*.env
+!*.env.example
+
+# Backend (Maven / Java)
+demoSpringBoot/target/
+demoSpringBoot/.mvn/wrapper/maven-wrapper.jar
+*.class
+demoSpringBoot/logs/
+*.log
+
+# Frontend (Node)
+frontend-pink-sweet/node_modules/
+frontend-pink-sweet/build/
+frontend-pink-sweet/coverage/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de uploads locales (no versionar imágenes subidas en desarrollo)
+demoSpringBoot/uploads/
