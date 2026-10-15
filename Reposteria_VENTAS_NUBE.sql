@@ -1,21 +1,14 @@
-CREATE DATABASE  IF NOT EXISTS `reposteria` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `reposteria`;
--- MySQL dump 10.13  Distrib 8.0.45, for Win64 (x86_64)
---
--- Host: localhost    Database: reposteria
--- ------------------------------------------------------
--- Server version	8.0.45
+-- =============================================================================
+-- Sweet Cream Rose — esquema VENTAS para MySQL en la nube (Aiven)
+-- No crea la base: Aiven ya entrega una (normalmente se llama defaultdb).
+-- Antes de ejecutar, en Workbench abre ESA base (doble clic para que quede
+-- en negrita) y luego corre este script.
+-- Se quitó el procedimiento drop_column_if_exists (DEFINER root@localhost),
+-- que la aplicación no usa y Aiven suele rechazar.
+-- =============================================================================
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
 
 --
 -- Table structure for table `carrito_item`
@@ -143,34 +136,6 @@ INSERT INTO `detalles_orden` VALUES (2,1,3.5,7,1,14,NULL),(2,2,4.5,9,1,55,NULL);
 UNLOCK TABLES;
 
 --
--- Table structure for table `horario_personal`
---
-
-DROP TABLE IF EXISTS `horario_personal`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `horario_personal` (
-  `hor_entrada` time(6) NOT NULL,
-  `hor_id` int NOT NULL AUTO_INCREMENT,
-  `hor_salida` time(6) NOT NULL,
-  `per_id_fk` int NOT NULL,
-  `hor_dia` enum('Domingo','Jueves','Lunes','Martes','Miercoles','Sabado','Viernes') NOT NULL,
-  PRIMARY KEY (`hor_id`),
-  KEY `FKiy0fi5kwhjcnppvutox6hd96h` (`per_id_fk`),
-  CONSTRAINT `FKiy0fi5kwhjcnppvutox6hd96h` FOREIGN KEY (`per_id_fk`) REFERENCES `personal` (`per_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `horario_personal`
---
-
-LOCK TABLES `horario_personal` WRITE;
-/*!40000 ALTER TABLE `horario_personal` DISABLE KEYS */;
-/*!40000 ALTER TABLE `horario_personal` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `oferta`
 --
 
@@ -231,94 +196,6 @@ LOCK TABLES `orden` WRITE;
 /*!40000 ALTER TABLE `orden` DISABLE KEYS */;
 INSERT INTO `orden` VALUES (1,16,5,'2026-06-14 04:34:41.828336','Dirección registrada','Pendiente','Yape');
 /*!40000 ALTER TABLE `orden` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `pedido_detalles`
---
-
-DROP TABLE IF EXISTS `pedido_detalles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pedido_detalles` (
-  `cantidad` int DEFAULT NULL,
-  `producto_id` int DEFAULT NULL,
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `pedido_id` bigint DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKnnxrhaa3hfk0jlpn5fb849flt` (`pedido_id`),
-  KEY `FKmote3ewyitfqavlb8v45xlrmc` (`producto_id`),
-  CONSTRAINT `FKmote3ewyitfqavlb8v45xlrmc` FOREIGN KEY (`producto_id`) REFERENCES `producto` (`pro_id`),
-  CONSTRAINT `FKnnxrhaa3hfk0jlpn5fb849flt` FOREIGN KEY (`pedido_id`) REFERENCES `pedidos` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `pedido_detalles`
---
-
-LOCK TABLES `pedido_detalles` WRITE;
-/*!40000 ALTER TABLE `pedido_detalles` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pedido_detalles` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `pedidos`
---
-
-DROP TABLE IF EXISTS `pedidos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pedidos` (
-  `total` double DEFAULT NULL,
-  `usuario_id` int DEFAULT NULL,
-  `fecha` datetime(6) DEFAULT NULL,
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `estado` varchar(255) DEFAULT NULL,
-  `nro_pedido` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKonf32qpq8pb2950dfgiyevy1h` (`usuario_id`),
-  CONSTRAINT `FKonf32qpq8pb2950dfgiyevy1h` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`usu_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `pedidos`
---
-
-LOCK TABLES `pedidos` WRITE;
-/*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `personal`
---
-
-DROP TABLE IF EXISTS `personal`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `personal` (
-  `per_fecha_ingreso` date DEFAULT NULL,
-  `per_id` int NOT NULL AUTO_INCREMENT,
-  `per_telefono` varchar(20) DEFAULT NULL,
-  `per_apellido` varchar(100) NOT NULL,
-  `per_nombre` varchar(100) NOT NULL,
-  `per_correo` varchar(150) NOT NULL,
-  `per_estado` enum('Activo','Inactivo') NOT NULL,
-  `per_rol` enum('Administrador','Atencion','Caja','Repartidor','Repostero') NOT NULL,
-  PRIMARY KEY (`per_id`),
-  UNIQUE KEY `UKsciwouu88lgmbkhac0ns0t9rm` (`per_correo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `personal`
---
-
-LOCK TABLES `personal` WRITE;
-/*!40000 ALTER TABLE `personal` DISABLE KEYS */;
-/*!40000 ALTER TABLE `personal` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -501,50 +378,5 @@ LOCK TABLES `usuario_metodo_pago` WRITE;
 /*!40000 ALTER TABLE `usuario_metodo_pago` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Dumping events for database 'reposteria'
---
-
---
--- Dumping routines for database 'reposteria'
---
-/*!50003 DROP PROCEDURE IF EXISTS `drop_column_if_exists` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `drop_column_if_exists`(IN tbl VARCHAR(64), IN col VARCHAR(64))
-BEGIN
-    IF EXISTS (
-        SELECT 1 FROM information_schema.COLUMNS
-        WHERE TABLE_SCHEMA = DATABASE()
-          AND TABLE_NAME = tbl
-          AND COLUMN_NAME = col
-    ) THEN
-        SET @sql = CONCAT('ALTER TABLE `', tbl, '` DROP COLUMN `', col, '`');
-        PREPARE stmt FROM @sql;
-        EXECUTE stmt;
-        DEALLOCATE PREPARE stmt;
-    END IF;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2026-07-11  19:16:00
+SET FOREIGN_KEY_CHECKS = 1;
+-- Fin. Deben existir 12 tablas de ventas.
