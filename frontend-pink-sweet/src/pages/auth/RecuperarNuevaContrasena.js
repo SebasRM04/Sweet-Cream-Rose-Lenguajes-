@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './Auth.css';
+import { API_BASE } from '../../api';
 import cupcakeImg from '../../assets/cupcake_grafico.png';
 import candadoRosa2Img from '../../assets/candadoRosa_2.png';
 import candadoGrisImg from '../../assets/candadoGris.png';
@@ -67,7 +68,7 @@ function RecuperarNuevaContrasena() {
     try {
       // FIX: endpoint correcto /api/auth/restablecer-contrasena
       // FIX: campo correcto "nuevaContrasena" (no "password" ni "nueva")
-      const res = await fetch('http://localhost:8081/api/auth/restablecer-contrasena', {
+      const res = await fetch(`${API_BASE}/api/auth/restablecer-contrasena`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token, nuevaContrasena: password }),

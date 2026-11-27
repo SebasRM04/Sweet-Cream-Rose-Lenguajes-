@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import iconShop from '../../assets/icon-shop.png';
+import { resolverImagenProducto } from '../../utils/imagenProducto';
 
 // Lee los IDs guardados en sessionStorage por Productos.js / Ofertas.js
 const leerFavoritoIds = () => {
@@ -186,7 +187,7 @@ const PerfilInfoTab = ({ setActiveTab, usuario, setUsuario }) => {
     setGuardando(true);
     const token = sessionStorage.getItem('token');
     try {
-      const res  = await fetch('http://localhost:8081/api/usuarios/perfil', {
+      const res  = await fetch(`${API_BASE}/api/usuarios/perfil`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify(form)
@@ -329,7 +330,7 @@ const PerfilInfoTab = ({ setActiveTab, usuario, setUsuario }) => {
               const nombreResumen = primerProducto
                 ? (pedido.detalles.length > 1 ? `${primerProducto.nombre} y ${pedido.detalles.length - 1} más` : primerProducto.nombre)
                 : 'Pedido sin detalle';
-              const imagenUrl = primerProducto?.imagenUrl ? `${API_BASE}${primerProducto.imagenUrl}` : null;
+              const imagenUrl = resolverImagenProducto(primerProducto?.imagenUrl, null);
 
               return (
                 <div key={pedido.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid #EAAFB8', borderRadius: '15px', padding: '15px 25px' }}>
@@ -380,7 +381,7 @@ const PerfilInfoTab = ({ setActiveTab, usuario, setUsuario }) => {
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '15px' }}>
             {favoritos.slice(0, 4).map((p) => {
-              const imagenUrl = p.imagenUrl ? (p.imagenUrl.startsWith('http') ? p.imagenUrl : `${API_BASE}${p.imagenUrl}`) : null;
+              const imagenUrl = resolverImagenProducto(p.imagenUrl, null);
               return (
                 <div key={p.id} style={{ border: '2px solid #EAAFB8', borderRadius: '20px', overflow: 'hidden', backgroundColor: 'white', display: 'flex', flexDirection: 'column' }}>
                   <div style={{ position: 'relative', height: '120px' }}>

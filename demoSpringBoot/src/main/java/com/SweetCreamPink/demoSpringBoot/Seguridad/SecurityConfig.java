@@ -104,8 +104,13 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        if (allowedOriginsRaw != null && !allowedOriginsRaw.isEmpty()) {
-            config.setAllowedOrigins(Arrays.asList(allowedOriginsRaw.split(",")));
+        if (allowedOriginsRaw != null && !allowedOriginsRaw.isBlank()) {
+            config.setAllowedOrigins(
+                    Arrays.stream(allowedOriginsRaw.split(","))
+                            .map(String::trim)
+                            .filter(s -> !s.isEmpty())
+                            .toList()
+            );
         } else {
             config.setAllowedOrigins(List.of("http://localhost:3000"));
         }

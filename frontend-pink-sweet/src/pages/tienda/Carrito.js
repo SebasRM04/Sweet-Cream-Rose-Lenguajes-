@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { getUsuarioId } from '../../api';
+import { resolverImagenProducto } from '../../utils/imagenProducto';
 import logoPrincipal from '../../assets/logo.png';
 import dividerTitle from '../../assets/divider-title.png';
 
@@ -83,7 +84,7 @@ function Carrito({ setPage, onCartUpdate }) {
       .then(data => {
         const mapeados = (Array.isArray(data) ? data : []).map(ci => ({
           id:         ci.producto?.id,
-          img:        ci.producto?.imagenUrl ? `${API_BASE}${ci.producto.imagenUrl}` : '/assets/products/logo.png',
+          img:        resolverImagenProducto(ci.producto?.imagenUrl, '/logo192.png'),
           nombre:     ci.producto?.nombre || 'Producto',
           desc:       ci.producto?.descripcion || '',
           precio:     Number(ci.producto?.precio || 0),
@@ -378,7 +379,7 @@ function Carrito({ setPage, onCartUpdate }) {
               return (
                 <div key={item.id} style={{ display: 'flex', alignItems: 'center', gap: '18px', padding: '18px 0', borderBottom: `1px solid ${COLORS.softPink}` }}>
                   <div style={{ width: '86px', height: '86px', minWidth: '86px', borderRadius: '14px', overflow: 'hidden', backgroundColor: COLORS.softPink }}>
-                    <img src={item.img} alt={item.nombre} style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.target.onerror = null; e.target.src = '/assets/products/logo.png'; }} />
+                    <img src={item.img} alt={item.nombre} style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { e.target.onerror = null; e.target.src = '/logo192.png'; }} />
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <h4 style={{ fontFamily: 'Poppins-SemiBold', fontSize: '15px', color: COLORS.brown, margin: '0 0 4px 0' }}>{item.nombre}</h4>

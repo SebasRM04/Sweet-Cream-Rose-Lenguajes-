@@ -9,6 +9,7 @@ import PerfilDireccionesTab from './PerfilDireccionesTab';
 import PerfilPagosTab from './PerfilPagosTab';
 import PerfilFavoritosTab from './PerfilFavoritosTab';
 import PerfilConfiguracionTab from './PerfilConfiguracionTab';
+import { API_BASE } from '../../api';
 
 const PerfilPanel = ({ setPage }) => {
   const [activeTab, setActiveTab] = useState("info");
@@ -25,7 +26,7 @@ const PerfilPanel = ({ setPage }) => {
   useEffect(() => {
     const token = sessionStorage.getItem('token');
     if (!token) return;
-    fetch('http://localhost:8081/api/usuarios/perfil', {
+    fetch(`${API_BASE}/api/usuarios/perfil`, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(res => res.ok ? res.json() : null)

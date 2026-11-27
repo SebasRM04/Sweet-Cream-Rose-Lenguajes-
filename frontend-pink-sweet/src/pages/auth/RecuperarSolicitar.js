@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Auth.css';
+import { API_BASE } from '../../api';
 import cupcakeImg from '../../assets/cupcake_grafico.png';
 import candadoImg from '../../assets/candadorosa.png';
 import mensajeImg from '../../assets/mensajeGris.png';
@@ -23,7 +24,7 @@ function RecuperarSolicitar() {
     setCargando(true);
     try {
       // FIX: el endpoint correcto es /api/auth/olvide-contrasena (no /api/auth/olvide-contrasena)
-      const res = await fetch('http://localhost:8081/api/auth/olvide-contrasena', {
+      const res = await fetch(`${API_BASE}/api/auth/olvide-contrasena`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ correo }),

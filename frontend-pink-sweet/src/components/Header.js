@@ -352,7 +352,7 @@ function AuthModal({ onClose }) {
     if (!loginCorreo || !loginPass) { setLoginError('Completa todos los campos.'); return; }
     setLoginLoading(true);
     try {
-      const res = await fetch('http://localhost:8081/api/auth/login', {
+      const res = await fetch(`${API_BASE}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ correo: loginCorreo, contrasena: loginPass }),
@@ -395,7 +395,7 @@ function AuthModal({ onClose }) {
     if (regPass !== regConfirmar) { setRegError('Las contraseñas no coinciden.'); return; }
     setRegLoading(true);
     try {
-      const res = await fetch('http://localhost:8081/api/auth/registro', {
+      const res = await fetch(`${API_BASE}/api/auth/registro`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -425,7 +425,7 @@ function AuthModal({ onClose }) {
     if (!recCorreo) { setRecError('Ingresa tu correo.'); return; }
     setRecLoading(true);
     try {
-      const res = await fetch('http://localhost:8081/api/auth/olvide-contrasena', {
+      const res = await fetch(`${API_BASE}/api/auth/olvide-contrasena`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ correo: recCorreo }),
@@ -447,7 +447,7 @@ function AuthModal({ onClose }) {
   const handleReenviar = async () => {
     setReenvioMsg('');
     try {
-      await fetch('http://localhost:8081/api/auth/olvide-contrasena', {
+      await fetch(`${API_BASE}/api/auth/olvide-contrasena`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ correo: correoGuardado }),
@@ -666,9 +666,7 @@ function CartDrawer({ onClose, setPage }) {
       .then(data => {
         const mapeados = (Array.isArray(data) ? data : []).map(ci => ({
           id:                 ci.producto?.id,
-          img:                ci.producto?.imagenUrl
-                                ? `${API_BASE_CART}${ci.producto.imagenUrl}`
-                                : '/assets/products/logo.png',
+          img:                resolverImagenProducto(ci.producto?.imagenUrl, '/logo192.png'),
           nombre:             ci.producto?.nombre || 'Producto',
           precio:             Number(ci.producto?.precio || 0),
           tieneOferta:        ci.tieneOferta || false,
@@ -877,7 +875,7 @@ const Header = ({ page, setPage }) => {
     const onUpdate = () => {
       const token = sessionStorage.getItem('token');
       if (!token) { setCartCount(0); return; }
-      fetch((process.env.REACT_APP_API_URL || 'http://localhost:8081') + '/api/carrito', {
+      fetch(`${API_BASE}/api/carrito`, {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then(r => r.ok ? r.json() : [])

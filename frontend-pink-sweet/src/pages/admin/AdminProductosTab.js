@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { API_BASE, apiGet, apiPost, apiPut, apiDelete, apiUpload } from '../../api';
+import { apiGet, apiPost, apiPut, apiDelete, apiUpload } from '../../api';
+import { resolverImagenProducto } from '../../utils/imagenProducto';
 import logoPrincipal from '../../assets/logo.png'; 
 
 // IMÁGENES DE PRODUCTOS (Fallbacks visuales)
@@ -182,7 +183,7 @@ const AdminProductosTab = () => {
         {visibles.map((prod) => {
           
           const esActivo = prod.activo !== false;
-          let imgSource = prod.imagenUrl ? (prod.imagenUrl.startsWith('http') ? prod.imagenUrl : `${API_BASE}${prod.imagenUrl}`) : imgTcTripleChocolate; // Fallback a tu maqueta
+          let imgSource = resolverImagenProducto(prod.imagenUrl, imgTcTripleChocolate);
 
           return (
             <div key={prod.id || Math.random()} style={{ border: '1px solid #EAEAEA', borderRadius: '15px', padding: '20px 25px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'white' }}>
@@ -317,7 +318,7 @@ function ModalProducto({ producto, categorias, onCancelar, onGuardar }) {
     activo: producto?.activo ?? true,
   });
   const [archivo, setArchivo] = useState(null);
-  const [preview, setPreview] = useState(producto?.imagenUrl ? `${API_BASE}${producto.imagenUrl}` : null);
+  const [preview, setPreview] = useState(producto?.imagenUrl ? resolverImagenProducto(producto.imagenUrl) : null);
   
   const MAX_MB = 10;
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));

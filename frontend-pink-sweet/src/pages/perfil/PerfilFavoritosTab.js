@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8080';
+import { API_BASE } from '../../api';
+import { resolverImagenProducto } from '../../utils/imagenProducto';
 
 // Lee los IDs guardados en sessionStorage por Productos.js
 const leerIdsDesdeStorage = () => {
@@ -176,7 +176,7 @@ const PerfilFavoritosTab = () => {
         {!cargando && favoritos.length > 0 && (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '15px' }}>
             {favoritos.map((prod) => {
-              const imagenSrc = prod.imagenUrl ? `${API_BASE}${prod.imagenUrl}` : null;
+              const imagenSrc = resolverImagenProducto(prod.imagenUrl, null);
               const isHovered = hoveredCard === prod.id;
 
               return (

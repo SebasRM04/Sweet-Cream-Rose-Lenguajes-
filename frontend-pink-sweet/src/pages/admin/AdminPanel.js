@@ -51,7 +51,7 @@ const AdminPanel = () => {
 
         {/* Logo superior (Clickeable al inicio) */}
         <div
-          onClick={() => window.location.href = 'http://localhost:3000/'}
+          onClick={() => window.location.href = '/'}
           style={{ padding: '40px 20px 30px 20px', textAlign: 'center', cursor: 'pointer' }}
         >
           <img
@@ -134,7 +134,7 @@ const AdminPanel = () => {
             <button style={{ background: 'none', border: 'none', fontSize: '20px', color: '#5A3E41', cursor: 'pointer' }}>
               <i className="fa-solid fa-bars"></i>
             </button>
-            <div onClick={() => window.location.href = 'http://localhost:3000/'} style={{ display: 'flex', alignItems: 'center', gap: '15px', cursor: 'pointer' }}>
+            <div onClick={() => window.location.href = '/'} style={{ display: 'flex', alignItems: 'center', gap: '15px', cursor: 'pointer' }}>
               <img src={logoPrincipal} alt="Logo" style={{ width: '45px', objectFit: 'contain' }} onError={e => e.target.style.display = 'none'} />
               <div>
                 <h2 style={{ fontFamily: 'RougeScript-Regular, cursive', fontSize: '26px', color: '#C3666D', margin: '0 0 -5px 0' }}>Sweet Cream Rose</h2>

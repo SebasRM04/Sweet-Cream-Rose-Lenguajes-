@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { apiGet, apiPost, apiPut, apiDelete, API_BASE } from "../../api";
+import { apiGet, apiPost, apiPut, apiDelete } from "../../api";
+import { resolverImagenProducto } from "../../utils/imagenProducto";
 import logoPrincipal from '../../assets/logo.png'; 
 
 // IMÁGENES DE PRODUCTOS (Fallbacks visuales)
@@ -10,11 +11,7 @@ import imgTFresa from '../../assets/products/t-fresa.png';
 import imgTvClasicos from '../../assets/products/tv-clasicos.png';
 
 // Resuelve la foto REAL del producto ligado a la oferta (viene anidada en o.producto.imagenUrl)
-const resolverImagenOferta = (o) => {
-  const url = o?.producto?.imagenUrl;
-  if (!url) return null;
-  return url.startsWith('http') ? url : `${API_BASE}${url}`;
-};
+const resolverImagenOferta = (o) => resolverImagenProducto(o?.producto?.imagenUrl, null);
 
 // Lógica de estado
 const calcularEstadoOferta = (o) => {

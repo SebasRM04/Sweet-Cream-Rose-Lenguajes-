@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Auth.css';
+import { API_BASE } from '../../api';
 import cupcakeImg from '../../assets/cupcake_grafico.png';
 import mensajeRosaImg from '../../assets/mensajeRosa.png';
 
@@ -43,7 +44,7 @@ function RecuperarRevisarCorreo() {
     setMensajeReenvio('');
     try {
       // FIX: endpoint correcto del backend
-      await fetch('http://localhost:8081/api/auth/olvide-contrasena', {
+      await fetch(`${API_BASE}/api/auth/olvide-contrasena`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ correo }),

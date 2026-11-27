@@ -159,7 +159,7 @@ export default function AdminLoginGate({ children }) {
         )}
 
         <div
-          onClick={() => (window.location.href = "http://localhost:3000/")}
+          onClick={() => (window.location.href = "/")}
           style={{
             textAlign: "center",
             marginTop: "20px",

@@ -15,4 +15,4 @@ RUN apt-get update \
 COPY --from=build /workspace/target/demoSpringBoot-*.jar app.jar
 
 EXPOSE 8081
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+ENTRYPOINT ["java", "-XX:MaxRAMPercentage=70", "-XX:+UseSerialGC", "-jar", "/app/app.jar"]

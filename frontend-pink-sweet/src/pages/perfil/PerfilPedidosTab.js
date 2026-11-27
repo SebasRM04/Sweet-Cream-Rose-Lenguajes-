@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import iconShop from '../../assets/icon-shop.png';
+import { resolverImagenProducto } from '../../utils/imagenProducto';
 
 const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8081';
 
@@ -204,7 +205,7 @@ const PerfilPedidosTab = ({ setPage }) => {
                 <div style={{ flexShrink: 0 }}>
                   {detalles[0]?.producto?.imagenUrl ? (
                     <img
-                      src={`${API_BASE}${detalles[0].producto.imagenUrl}`}
+                      src={resolverImagenProducto(detalles[0].producto.imagenUrl)}
                       alt={detalles[0]?.producto?.nombre || 'Producto'}
                       style={{ width: "160px", height: "120px", objectFit: "cover", borderRadius: "15px" }}
                       onError={e => { e.target.style.background = '#FADADD'; e.target.style.display = 'block'; }}
@@ -236,7 +237,7 @@ const PerfilPedidosTab = ({ setPage }) => {
                       detalle.producto?.imagenUrl ? (
                         <img
                           key={idx}
-                          src={`${API_BASE}${detalle.producto.imagenUrl}`}
+                          src={resolverImagenProducto(detalle.producto.imagenUrl)}
                           alt="miniatura"
                           style={{ width: "35px", height: "35px", borderRadius: "50%", objectFit: "cover", border: "2px solid white", marginLeft: idx > 0 ? "-10px" : "0", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" }}
                           onError={e => e.target.style.display='none'}
