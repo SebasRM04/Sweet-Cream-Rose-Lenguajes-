@@ -2,76 +2,60 @@ import React, { useState } from 'react';
 
 import dividerTitle from "../../assets/divider-title.png"; 
 
-const PoliticasEnvio = ({ setPage }) => {
-    // Estado para manejar el efecto "hover" en cada fila
+const PoliticasPrivacidad = ({ setPage }) => {
+    // Estado para manejar el efecto "hover" en línea
     const [hoveredId, setHoveredId] = useState(null);
     // Estado para el efecto "hover" del botón volver
     const [volverHover, setVolverHover] = useState(false);
 
-    // Cambiamos 'descripcion' para que acepte nodos JSX y poder darle formato (colores, listas, saltos de línea)
-    const politicasEnvioData = [
+    const politicasData = [
         {
             id: 1,
-            titulo: "TIPO DE ENTREGA",
-            descripcion: "El envío es realizado mediante una plataforma de delivery externa (como Rappi), sujeta a disponibilidad en la zona.",
-            icon: "fas fa-motorcycle"
+            titulo: "1. INFORMACIÓN QUE RECOPILAMOS",
+            descripcion: "Recopilamos información personal que nos proporcionas al registrarte, realizar compras o contactarnos, como nombre, correo electrónico, teléfono y dirección de entrega.",
+            icon: "fas fa-user-shield"
         },
         {
             id: 2,
-            titulo: "TIEMPO DE ENTREGA",
-            descripcion: (
-                <>
-                    El tiempo estimado de entrega puede variar según la distancia, el tráfico y las condiciones del servicio de delivery.
-                    <br /><br />
-                    <span style={{ color: '#C6676D' }}>Tiempo referencial: entre 20 y 60 minutos.</span>
-                </>
-            ),
-            icon: "fas fa-shipping-fast"
+            titulo: "2. USO DE TU INFORMACIÓN",
+            descripcion: "Utilizamos tu información para procesar pedidos, realizar entregas, mejorar tu experiencia en la aplicación y enviarte comunicaciones relacionadas con tus pedidos u ofertas.",
+            icon: "fas fa-folder-open"
         },
         {
             id: 3,
-            titulo: "SEGUIMIENTO DEL PEDIDO",
+            titulo: "3. PROTECCIÓN DE TU INFORMACIÓN",
             descripcion: "Podrás realizar el seguimiento de tu pedido en tiempo real a través del sistema de la plataforma de delivery, donde se mostrará el estado y ubicación del repartidor.",
-            icon: "fas fa-map-marker-alt"
-        },
-        {
-            id: 4,
-            titulo: "EMPAQUE DEL PRODUCTO",
-            descripcion: (
-                <>
-                    Todos nuestros productos son empacados cuidadosamente utilizando un sistema de doble protección:
-                    <ul style={{ margin: '5px 0 5px 20px', padding: 0 }}>
-                        <li>Una caja interna decorada que contiene el producto.</li>
-                        <li>Una caja externa resistente que protege el traslado.</li>
-                    </ul>
-                    Esto nos permite conservar la calidad y presentación del postre durante el envío.
-                </>
-            ),
-            icon: "fas fa-box-open"
-        },
-        {
-            id: 5,
-            titulo: "RESPONSABILIDAD",
-            descripcion: "Nos responsabilizamos por la correcta preparación y embalaje del producto. El servicio de transporte es responsabilidad de la plataforma de delivery.",
             icon: "fas fa-shield-alt"
         },
         {
+            id: 4,
+            titulo: "4. COMPARTIR INFORMACIÓN",
+            descripcion: "No vendemos ni alquilamos tu información personal. Podemos compartirla con servicios externos únicamente para procesar pagos o realizar entregas (ej. plataformas de delivery).",
+            icon: "fas fa-share-alt"
+        },
+        {
+            id: 5,
+            titulo: "5. COOKIES Y TECNOLOGÍAS SIMILARES",
+            descripcion: "Usamos cookies y tecnologías similares para mejorar tu navegación, recordar tus preferencias y analizar el uso de nuestra aplicación. Puedes desactivar las cookies desde la configuración de tu dispositivo.",
+            icon: "fas fa-cookie-bite"
+        },
+        {
             id: 6,
-            titulo: "CONDICIONES DE ENTREGA",
-            descripcion: "Es responsabilidad del cliente brindar una dirección correcta y estar disponible al momento de la entrega para recibir el pedido.",
-            icon: "fas fa-user"
+            titulo: "6. TUS DERECHOS",
+            descripcion: "Tienes derecho a acceder, corregir o eliminar tu información personal. Si deseas ejercer alguno de estos derechos, contáctanos a través de nuestros canales de atención.",
+            icon: "fas fa-trash-alt"
         },
         {
             id: 7,
-            titulo: "COBERTURA",
-            descripcion: "El servicio de envío está disponible únicamente en zonas cercanas y dentro del área de cobertura de la plataforma de delivery.",
-            icon: "fas fa-map-marked-alt"
+            titulo: "7. CAMBIOS EN LA POLÍTICA",
+            descripcion: "Podemos actualizar esta política de privacidad en cualquier momento. Te notificaremos sobre cambios importantes a través de la aplicación o por correo electrónico.",
+            icon: "fas fa-file-signature"
         },
         {
             id: 8,
-            titulo: "COSTO DE ENVÍO",
-            descripcion: "El costo de envío será determinado por la plataforma de delivery según la distancia y ubicación del cliente.",
-            icon: "fas fa-dollar-sign"
+            titulo: "8. CONTACTO",
+            descripcion: "Si tienes dudas sobre esta política de privacidad, puedes escribirnos a info@sweetcreamrose.com o comunicarte a través de nuestros canales de atención en la aplicación.",
+            icon: "fas fa-envelope"
         }
     ];
 
@@ -111,7 +95,7 @@ const PoliticasEnvio = ({ setPage }) => {
                 {/* Encabezado Principal */}
                 <div style={{ textAlign: 'center', marginBottom: '40px' }}>
                     <h2 style={{ color: '#5A3E41', fontSize: '26px', fontFamily: 'Poppins-Bold', margin: '0 0 0px 0', letterSpacing: '1px' }}>
-                        POLÍTICAS DE ENVÍO
+                        POLÍTICAS DE PRIVACIDAD
                     </h2>
                     
                     <img 
@@ -121,14 +105,14 @@ const PoliticasEnvio = ({ setPage }) => {
                     />
                     
                     <p style={{ color: '#5A3E41', fontSize: '15px', fontFamily: 'Poppins-Medium', lineHeight: '1.5', margin: '0' }}>
-                        Nos aseguramos de que tu pedido llegue en perfectas condiciones para que<br />
-                        disfrutes cada detalle de nuestros productos.
+                        En Sweet Cream Rose, tu privacidad es muy importante para nosotros. Esta<br />
+                        política explica cómo recopilamos, usamos y protegemos tu información.
                     </p>
                 </div>
 
                 {/* Caja Unificada de Políticas (Molde Maestro) */}
-                <div style={{ backgroundColor: 'white', border: '2px solid #EAAFB8', borderRadius: '20px', overflow: 'hidden', marginBottom: '45px' }}>
-                    {politicasEnvioData.map((item, index) => (
+                <div style={{ backgroundColor: 'white', border: '2px solid #EAAFB8', borderRadius: '20px', overflow: 'hidden', marginBottom: '35px' }}>
+                    {politicasData.map((item, index) => (
                         <div 
                             key={item.id} 
                             onMouseEnter={() => setHoveredId(item.id)}
@@ -137,69 +121,51 @@ const PoliticasEnvio = ({ setPage }) => {
                                 display: 'flex', 
                                 alignItems: 'center', 
                                 gap: '35px', 
-                                padding: '35px 50px', 
-                                borderBottom: index === politicasEnvioData.length - 1 ? 'none' : '1px solid #EAAFB8',
+                                padding: '30px 60px', 
+                                borderBottom: index === politicasData.length - 1 ? 'none' : '1px solid #EAAFB8',
                                 backgroundColor: hoveredId === item.id ? '#F9D7DD' : 'transparent',
-                                transition: 'background-color 0.3s ease'
+                                transition: 'background-color 0.2s ease'
                             }}
                         >
                             {/* Círculo contenedor del icono */}
                             <div style={{ flexShrink: 0 }}>
-                                <div style={{ 
-                                    backgroundColor: '#FDF2F3', 
-                                    width: '85px', 
-                                    height: '85px', 
-                                    borderRadius: '50%', 
-                                    display: 'flex', 
-                                    alignItems: 'center', 
-                                    justifyContent: 'center' 
-                                }}>
-                                    <i className={item.icon} style={{ color: '#C6676D', fontSize: '35px' }}></i>
+                                <div style={{ backgroundColor: '#FDF2F3', width: '85px', height: '85px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px dashed #F9D5DA' }}>
+                                    <i className={item.icon} style={{ color: '#C6676D', fontSize: '32px' }}></i>
                                 </div>
                             </div>
                             
                             {/* Textos informativos */}
                             <div style={{ flex: 1 }}>
-                                <h3 style={{ fontSize: '16px', fontFamily: 'Poppins-Bold', color: '#5A3E41', margin: '0 0 10px 0', letterSpacing: '0.5px' }}>
+                                <h3 style={{ fontSize: '16px', fontFamily: 'Poppins-Bold', color: '#5A3E41', margin: '0 0 8px 0', letterSpacing: '0.5px' }}>
                                     {item.titulo}
                                 </h3>
-                                {/* Renderizamos la descripción que ahora soporta JSX */}
-                                <div style={{ fontSize: '14px', fontFamily: 'Poppins-Medium', color: '#777777', lineHeight: '1.6', margin: '0' }}>
+                                <p style={{ fontSize: '14px', fontFamily: 'Poppins-Regular', color: '#777777', lineHeight: '1.6', margin: '0' }}>
                                     {item.descripcion}
-                                </div>
+                                </p>
                             </div>
                         </div>
                     ))}
                 </div>
 
                 {/* Banner Destacado Inferior de Confianza */}
-                <div style={{ 
-                    backgroundColor: '#F9D7DD', 
-                    borderRadius: '20px', 
-                    padding: '35px 50px', 
-                    display: 'flex', 
-                    alignItems: 'center', 
-                    justifyContent: 'center', 
-                    gap: '35px',
-                    margin: '0 auto',
-                    maxWidth: '1700px'
-                }}>
+                <div style={{ backgroundColor: '#F9D7DD', borderRadius: '20px', padding: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '30px' }}>
                     <div style={{ flexShrink: 0 }}>
-                        <i className="fas fa-box" style={{ color: '#C6676D', fontSize: '65px' }}></i>
+                        {/* Puedes cambiar esta etiqueta <i> por tu PNG cuando lo tengas */}
+                        <i className="fas fa-user-shield" style={{ color: '#EAAFB8', fontSize: '60px' }}></i>
                     </div>
                     <div>
-                        <h4 style={{ color: '#5A3E41', fontSize: '20px', fontFamily: 'Poppins-Bold', margin: '0 0 8px 0' }}>
-                            Nuestros postres viajan con amor
+                        <h4 style={{ color: '#5A3E41', fontSize: '18px', fontFamily: 'Poppins-Bold', margin: '0 0 5px 0' }}>
+                            Tu confianza es nuestro ingrediente principal
                         </h4>
                         <p style={{ color: '#C6676D', fontSize: '15px', fontFamily: 'Poppins-Medium', margin: '0' }}>
-                            Para que lleguen tan perfectos como salieron de nuestra repostería.
+                            Gracias por permitirnos ser parte de tus momentos más dulces.
                         </p>
                     </div>
                 </div>
 
             </div>
 
-            {/* PROPUESTAS DE VALOR (Alineación perfecta a 1100px) */}
+            {/* PROPUESTAS DE VALOR (Ancho de 1100px para alinear con footer) */}
             <div style={{ maxWidth: '1100px', margin: '60px auto 0 auto', display: 'flex', justifyContent: 'space-between', padding: '30px 40px 0 40px', borderTop: '2px solid #FADADD' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                     <i className="fa-solid fa-cube" style={{ fontSize: '35px', color: '#EAAFB8' }}></i>
@@ -223,4 +189,4 @@ const PoliticasEnvio = ({ setPage }) => {
     );
 };
 
-export default PoliticasEnvio;
+export default PoliticasPrivacidad;
