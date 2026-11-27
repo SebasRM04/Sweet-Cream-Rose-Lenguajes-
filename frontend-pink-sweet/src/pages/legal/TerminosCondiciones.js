@@ -1,62 +1,23 @@
 import React, { useState } from 'react';
 
-import dividerTitle from "../../assets/divider-title.png"; 
+import dividerTitle from "../../assets/divider-title.png";
 
-const PoliticasPrivacidad = ({ setPage }) => {
-    // Estado para manejar el efecto "hover" en línea
+const TerminosCondiciones = ({ setPage }) => {
     const [hoveredId, setHoveredId] = useState(null);
     // Estado para el efecto "hover" del botón volver
     const [volverHover, setVolverHover] = useState(false);
 
-    const politicasData = [
-        {
-            id: 1,
-            titulo: "1. INFORMACIÓN QUE RECOPILAMOS",
-            descripcion: "Recopilamos información personal que nos proporcionas al registrarte, realizar compras o contactarnos, como nombre, correo electrónico, teléfono y dirección de entrega.",
-            icon: "fas fa-user-shield"
-        },
-        {
-            id: 2,
-            titulo: "2. USO DE TU INFORMACIÓN",
-            descripcion: "Utilizamos tu información para procesar pedidos, realizar entregas, mejorar tu experiencia en la aplicación y enviarte comunicaciones relacionadas con tus pedidos u ofertas.",
-            icon: "fas fa-folder-open"
-        },
-        {
-            id: 3,
-            titulo: "3. PROTECCIÓN DE TU INFORMACIÓN",
-            descripcion: "Podrás realizar el seguimiento de tu pedido en tiempo real a través del sistema de la plataforma de delivery, donde se mostrará el estado y ubicación del repartidor.",
-            icon: "fas fa-shield-alt"
-        },
-        {
-            id: 4,
-            titulo: "4. COMPARTIR INFORMACIÓN",
-            descripcion: "No vendemos ni alquilamos tu información personal. Podemos compartirla con servicios externos únicamente para procesar pagos o realizar entregas (ej. plataformas de delivery).",
-            icon: "fas fa-share-alt"
-        },
-        {
-            id: 5,
-            titulo: "5. COOKIES Y TECNOLOGÍAS SIMILARES",
-            descripcion: "Usamos cookies y tecnologías similares para mejorar tu navegación, recordar tus preferencias y analizar el uso de nuestra aplicación. Puedes desactivar las cookies desde la configuración de tu dispositivo.",
-            icon: "fas fa-cookie-bite"
-        },
-        {
-            id: 6,
-            titulo: "6. TUS DERECHOS",
-            descripcion: "Tienes derecho a acceder, corregir o eliminar tu información personal. Si deseas ejercer alguno de estos derechos, contáctanos a través de nuestros canales de atención.",
-            icon: "fas fa-trash-alt"
-        },
-        {
-            id: 7,
-            titulo: "7. CAMBIOS EN LA POLÍTICA",
-            descripcion: "Podemos actualizar esta política de privacidad en cualquier momento. Te notificaremos sobre cambios importantes a través de la aplicación o por correo electrónico.",
-            icon: "fas fa-file-signature"
-        },
-        {
-            id: 8,
-            titulo: "8. CONTACTO",
-            descripcion: "Si tienes dudas sobre esta política de privacidad, puedes escribirnos a info@sweetcreamrose.com o comunicarte a través de nuestros canales de atención en la aplicación.",
-            icon: "fas fa-envelope"
-        }
+    const terminosData = [
+        { id: 1, titulo: "1. ACEPTACIÓN DE LOS TÉRMINOS", descripcion: "Al acceder y utilizar nuestra aplicación, aceptas cumplir con estos términos y condiciones, así como nuestras políticas de privacidad y envío.", icon: "fas fa-file-alt" },
+        { id: 2, titulo: "2. PRODUCTOS", descripcion: "Nuestros productos son elaborados artesanalmente con ingredientes de calidad. Las imágenes son referenciales y pueden variar ligeramente en decoración y presentación.", icon: "fas fa-shopping-bag" },
+        { id: 3, titulo: "3. PRECIOS Y PAGOS", descripcion: "Todos los precios están expresados en soles (S/). El pago debe realizarse al momento de confirmar el pedido a través de los métodos disponibles en la aplicación.", icon: "fas fa-credit-card" },
+        { id: 4, titulo: "4. ENVÍOS", descripcion: "Los envíos son realizados mediante plataformas externas de delivery. El tiempo de entrega puede variar según la ubicación y condiciones del servicio.", icon: "fas fa-motorcycle" },
+        { id: 5, titulo: "5. CANCELACIONES Y MODIFICACIONES", descripcion: "Los pedidos solo pueden ser cancelados o modificados dentro del tiempo establecido antes de su preparación. Una vez en proceso, no podrán ser modificados.", icon: "fas fa-box" },
+        { id: 6, titulo: "6. DEVOLUCIONES Y REEMBOLSOS", descripcion: "No realizamos devoluciones en productos perecederos. Si tu pedido llega con algún error o daño, contáctanos dentro de los primeros 30 minutos de recibido.", icon: "fas fa-sync-alt" },
+        { id: 7, titulo: "7. PROTECCIÓN DE DATOS", descripcion: "Tu información personal está protegida y será utilizada únicamente para procesar tu pedido y mejorar tu experiencia en nuestra aplicación.", icon: "fas fa-shield-alt" },
+        { id: 8, titulo: "8. RESPONSABILIDAD", descripcion: "Sweet Cream Rose no se hace responsable por retrasos o incidencias ocasionadas por terceros (servicio de delivery, proveedores o fuerza mayor).", icon: "fas fa-balance-scale" },
+        { id: 9, titulo: "9. MODIFICACIONES", descripcion: "Nos reservamos el derecho de modificar estos términos y condiciones en cualquier momento. Las modificaciones serán publicadas en la aplicación.", icon: "fas fa-pen-square" },
+        { id: 10, titulo: "10. CONTACTO", descripcion: "Para cualquier consulta, puedes escribirnos a través de nuestros canales de atención disponibles en la aplicación.", icon: "fas fa-heart" }
     ];
 
     return (
@@ -64,8 +25,8 @@ const PoliticasPrivacidad = ({ setPage }) => {
             
             {/* Contenedor Principal Central (800px) */}
             <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-
-                {/* Botón de retroceso */}
+                
+                {/* Botón Volver */}
                 <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '-10px', marginLeft: '-10px' }}>
                     <button
                         onClick={() => setPage('inicio')}
@@ -92,12 +53,13 @@ const PoliticasPrivacidad = ({ setPage }) => {
                     </button>
                 </div>
 
-                {/* Encabezado Principal */}
+                {/* Header Actualizado */}
                 <div style={{ textAlign: 'center', marginBottom: '40px' }}>
                     <h2 style={{ color: '#5A3E41', fontSize: '26px', fontFamily: 'Poppins-Bold', margin: '0 0 0px 0', letterSpacing: '1px' }}>
-                        POLÍTICAS DE PRIVACIDAD
+                        TÉRMINOS Y CONDICIONES
                     </h2>
                     
+                    {/* AQUÍ ESTÁ EL CAMBIO: Reemplazamos el texto por tu imagen */}
                     <img 
                         src={dividerTitle} 
                         alt="divisor" 
@@ -105,14 +67,14 @@ const PoliticasPrivacidad = ({ setPage }) => {
                     />
                     
                     <p style={{ color: '#5A3E41', fontSize: '15px', fontFamily: 'Poppins-Medium', lineHeight: '1.5', margin: '0' }}>
-                        En Sweet Cream Rose, tu privacidad es muy importante para nosotros. Esta<br />
-                        política explica cómo recopilamos, usamos y protegemos tu información.
+                        Al utilizar nuestra aplicación y realizar compras en Sweet Cream Rose, aceptas<br />
+                        los siguientes términos y condiciones:
                     </p>
                 </div>
 
-                {/* Caja Unificada de Políticas (Molde Maestro) */}
-                <div style={{ backgroundColor: 'white', border: '2px solid #EAAFB8', borderRadius: '20px', overflow: 'hidden', marginBottom: '35px' }}>
-                    {politicasData.map((item, index) => (
+                {/* Contenedor con borde estándar de 2px */}
+                <div style={{ backgroundColor: 'white', border: '2px solid #EAAFB8', borderRadius: '20px', overflow: 'hidden' }}>
+                    {terminosData.map((item, index) => (
                         <div 
                             key={item.id} 
                             onMouseEnter={() => setHoveredId(item.id)}
@@ -121,20 +83,20 @@ const PoliticasPrivacidad = ({ setPage }) => {
                                 display: 'flex', 
                                 alignItems: 'center', 
                                 gap: '35px', 
-                                padding: '30px 60px', 
-                                borderBottom: index === politicasData.length - 1 ? 'none' : '1px solid #EAAFB8',
+                                padding: '30px 60px',
+                                borderBottom: index === terminosData.length - 1 ? 'none' : '1px solid #EAAFB8',
                                 backgroundColor: hoveredId === item.id ? '#F9D7DD' : 'transparent',
                                 transition: 'background-color 0.2s ease'
                             }}
                         >
-                            {/* Círculo contenedor del icono */}
+                            {/* Círculo del icono */}
                             <div style={{ flexShrink: 0 }}>
                                 <div style={{ backgroundColor: '#FDF2F3', width: '85px', height: '85px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px dashed #F9D5DA' }}>
                                     <i className={item.icon} style={{ color: '#C6676D', fontSize: '32px' }}></i>
                                 </div>
                             </div>
                             
-                            {/* Textos informativos */}
+                            {/* Texto informativo */}
                             <div style={{ flex: 1 }}>
                                 <h3 style={{ fontSize: '16px', fontFamily: 'Poppins-Bold', color: '#5A3E41', margin: '0 0 8px 0', letterSpacing: '0.5px' }}>
                                     {item.titulo}
@@ -146,23 +108,6 @@ const PoliticasPrivacidad = ({ setPage }) => {
                         </div>
                     ))}
                 </div>
-
-                {/* Banner Destacado Inferior de Confianza */}
-                <div style={{ backgroundColor: '#F9D7DD', borderRadius: '20px', padding: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '30px' }}>
-                    <div style={{ flexShrink: 0 }}>
-                        {/* Puedes cambiar esta etiqueta <i> por tu PNG cuando lo tengas */}
-                        <i className="fas fa-user-shield" style={{ color: '#EAAFB8', fontSize: '60px' }}></i>
-                    </div>
-                    <div>
-                        <h4 style={{ color: '#5A3E41', fontSize: '18px', fontFamily: 'Poppins-Bold', margin: '0 0 5px 0' }}>
-                            Tu confianza es nuestro ingrediente principal
-                        </h4>
-                        <p style={{ color: '#C6676D', fontSize: '15px', fontFamily: 'Poppins-Medium', margin: '0' }}>
-                            Gracias por permitirnos ser parte de tus momentos más dulces.
-                        </p>
-                    </div>
-                </div>
-
             </div>
 
             {/* PROPUESTAS DE VALOR (Ancho de 1100px para alinear con footer) */}
@@ -189,4 +134,4 @@ const PoliticasPrivacidad = ({ setPage }) => {
     );
 };
 
-export default PoliticasPrivacidad;
+export default TerminosCondiciones;
